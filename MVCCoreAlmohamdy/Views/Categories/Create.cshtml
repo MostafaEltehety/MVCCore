@@ -1,0 +1,58 @@
+﻿@model MVCCoreAlmohamdy.Models.Category
+
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>New</h1>
+
+<h4>Category</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            
+     <div class="form-group">
+  <label class="col-form-label mt-4" asp-for="FormFile">Image</label>
+  <input type="file" class="form-control" asp-for="FormFile"  placeholder="Chose Image" onchange="loadFile(event)">
+  <br /><br />
+  <img id="MyImg" height="200" />
+</div>
+<br /><br />
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+    var loadFile=function(event){
+        var reader=new FileReader();
+        reader.onload=function(){
+          var Img=  document.getElementById("MyImg");
+            Img.src=reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+    </script>
+
+}
