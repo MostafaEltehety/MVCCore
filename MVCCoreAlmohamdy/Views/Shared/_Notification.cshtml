@@ -1,0 +1,12 @@
+﻿    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+@if (TempData["SuccessfullData"] != null)
+{
+  @*  <h6 class="text-info">@TempData["SuccessfullData"]</h6>*@
+  <script>
+      
+  toastr.info('@TempData["SuccessfullData"]');
+  
+  </script>
+}
